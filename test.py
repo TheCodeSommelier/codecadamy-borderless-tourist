@@ -2,28 +2,30 @@ destinations = ["Paris, France", "Shanghai, China", "Los Angeles, USA", "São Pa
 
 test_traveler = ["Erin Wilkes", "Shanghai, China", ["historical site", "art"]]
 
+
+# This function gets the index of the destination in the "destinations" list
 def get_destination_index(destination):
     destination_index = destinations.index(destination)
     return destination_index
 
-#print(get_destination_index(""))
 
+# This function gets travelers location
 def get_traveler_location(traveler):
     traveler_destination = test_traveler[1]
     traveler_destination_index = get_destination_index(traveler_destination)
     return traveler_destination_index
 
-test_destination_index = get_traveler_location(test_traveler)
-
-
+# This loop creates empty lists for future attractions. Number of lists is based on destinations
 attractions = [[] for element in destinations]
 
+# This function lets you add attractions to the attratctions sublists
 def add_attraction(destination, attraction):
     destination_index = get_destination_index(destination)
     attractions_for_destinations = attractions[destination_index]
     attractions_for_destinations.append(attraction)
     return attractions_for_destinations
 
+# Here I added some attractions
 add_attraction("Los Angeles, USA", ["Venice Beach", ["beach"]])
 add_attraction("Paris, France", ["the Louvre", ["art", "museum"]])
 add_attraction("Paris, France", ["Arc de Triomphe", ["historical site", "monument"]])
@@ -35,8 +37,7 @@ add_attraction("São Paulo, Brazil", ["São Paulo Zoo", ["zoo"]])
 add_attraction("São Paulo, Brazil", ["Pátio do Colégio", ["historical site"]])
 add_attraction("Cairo, Egypt", ["Pyramids of Giza", ["monument", "historical site"]])
 
-# We'll have to rewrite this tomorrow my brogrammer!
-
+# This function finds attractions based on interests of the traveler 
 def find_attractions(destination, interests):
     destination_index = get_destination_index(destination)
     attractions_in_city = attractions[destination_index]
@@ -51,8 +52,7 @@ def find_attractions(destination, interests):
 
 la_arts = find_attractions("Los Angeles, USA", ["art"])
 
-#print(la_arts)
-
+# This function returns a string greeting the traveler and suggesting attractions based on their interests
 def get_attractions_for_traveler(traveler):
     traveler_destination = traveler[1]
     traveler_interests = traveler[2]
@@ -62,6 +62,8 @@ def get_attractions_for_traveler(traveler):
         interests_string = interests_string + ", " + attraction
     return interests_string
 
+# Here I defined one traveler. Feel free to change the lists or add new function calls
 smills_france = get_attractions_for_traveler(["Dereck Smill", "Paris, France", ["monument"]])
 
+# Remeber to print the results of calling get_attractions_for_traveler with your traveler to see the result! 😁
 print(smills_france)
