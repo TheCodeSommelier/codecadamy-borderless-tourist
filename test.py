@@ -14,12 +14,9 @@ def get_traveler_location(traveler):
     return traveler_destination_index
 
 test_destination_index = get_traveler_location(test_traveler)
-print(test_destination_index)
 
 
 attractions = [[] for element in destinations]
-
-print(attractions)
 
 def add_attraction(destination, attraction):
     destination_index = get_destination_index(destination)
@@ -38,5 +35,20 @@ add_attraction("São Paulo, Brazil", ["São Paulo Zoo", ["zoo"]])
 add_attraction("São Paulo, Brazil", ["Pátio do Colégio", ["historical site"]])
 add_attraction("Cairo, Egypt", ["Pyramids of Giza", ["monument", "historical site"]])
 
+# We'll have to rewrite this tomorrow my brogrammer!
 
-print(attractions)
+def find_attractions(destination, interests):
+    destination_index = get_destination_index(destination)
+    attractions_in_city = attractions[destination_index]
+    attractions_with_interests = []
+    
+    for attraction in attractions_in_city:
+        possible_attraction = attraction
+        for interest in interests:
+            if interest in possible_attraction[1]:
+                attractions_with_interests.append(possible_attraction[0])
+    return attractions_with_interests
+
+la_arts = find_attractions("Los Angeles, USA", ["art"])
+
+print(la_arts)
